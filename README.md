@@ -7,7 +7,7 @@ $ meteor add cottz:iron-query
 ```
 
 ## API
-`Iron.query` works exactly as a session
+`Iron.query` works exactly as a session but their values are stored in the route and depend of the route
 
 #### Iron.query.set (key, value)
 add or change the value of a key in the path
