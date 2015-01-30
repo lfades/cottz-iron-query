@@ -64,7 +64,6 @@ Router.route('/home', {
 });
 
 /* somewhere in the client-side */
-// '10' or 10 is always a string to the route but not for Iron.query.get
 Iron.query.set('skip', 10);
 Iron.query.set('q', 'beautiful places');
 ````
