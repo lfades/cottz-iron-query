@@ -32,7 +32,7 @@ query.getNonreactive = function (key) {
 };
 
 query.wait = function (key, val) {
-	if (val)
+	if (!( typeof val == "undefined" ) && val != null)
 		queryObj[key] = val;
 	else
 		delete queryObj[key];
