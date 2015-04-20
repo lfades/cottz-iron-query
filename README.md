@@ -51,15 +51,12 @@ Iron.query.set = function (key, value) {
 Router.route('/home', {
     // with fastRender waiton is not very useful so I use subscriptions
 	subscriptions: function () {
-		var params = this.params;
-		if (Meteor.isClient)
-		    // in the client the query params are in params.query 
-			params = params.query;
+		var query = this.params.query;
 
 		return [
 			Meteor.subscribe('news', {
-			  skip: Number(params.skip),
-			  search: params.q
+			  skip: Number(query.skip),
+			  search: query.q
 			});
 		];
 	},
@@ -67,7 +64,6 @@ Router.route('/home', {
 });
 
 /* somewhere in the client-side */
-// '10' or 10 is always a string to the route but not for Iron.query.get
 Iron.query.set('skip', 10);
 Iron.query.set('q', 'beautiful places');
 ````
