@@ -32,8 +32,12 @@ query.getNonreactive = function (key) {
 };
 
 query.wait = function (key, val) {
+	var oldVal = queryObj[key];
+	if (String(val) === oldVal || !oldVal && !val)
+		return;
+
 	if (!( typeof val == "undefined" ) && val != null)
-		queryObj[key] = val;
+		queryObj[key] = String(val);
 	else
 		delete queryObj[key];
 
@@ -52,6 +56,7 @@ Iron.query = query;
 
 Tracker.autorun(function () {
 	path = Iron.Location.get();
+	
 	if (pathname && path.pathname != pathname)
 		query.keyDeps = {};
 	
