@@ -57,8 +57,13 @@ Iron.query = query;
 Tracker.autorun(function () {
 	path = Iron.Location.get();
 	
-	if (pathname && path.pathname != pathname)
-		query.keyDeps = {};
+	if (pathname && path.pathname != pathname) {
+		var deps = query.keyDeps;
+		for (var key in deps) {
+			deps[key].changed();
+		};
+		query.dep && query.dep.changed();
+	}
 	
 	pathname = path.pathname;
 	queryObj = path.queryObject;
