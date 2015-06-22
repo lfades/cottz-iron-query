@@ -36,7 +36,7 @@ query.wait = function (key, val) {
 	if (String(val) === oldVal || !oldVal && !val)
 		return;
 
-	if (!( typeof val == "undefined" ) && val != null)
+	if (typeof val != 'undefined' && val != null && val != '')
 		queryObj[key] = String(val);
 	else
 		delete queryObj[key];

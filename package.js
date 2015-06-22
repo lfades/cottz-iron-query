@@ -1,7 +1,7 @@
 Package.describe({
   name: 'cottz:iron-query',
   summary: 'simple package to add and take parameters in the route',
-  version: '1.2.3',
+  version: '1.2.4',
   git: 'https://github.com/Goluis/cottz-iron-query'
 });
 
