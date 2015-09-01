@@ -16,7 +16,7 @@ query.get = function (key) {
 	} else {
 		if (!this.dep)
 			this.dep = new Tracker.Dependency;
-		
+
 		this.dep.depend();
 		return path.queryObject;
 	}
@@ -43,7 +43,7 @@ query.wait = function (key, val) {
 
 	var dep = this.keyDeps[key];
 	dep && dep.changed();
-	
+
 	this.dep && this.dep.changed();
 };
 
@@ -56,15 +56,15 @@ Iron.query = query;
 
 Tracker.autorun(function () {
 	path = Iron.Location.get();
-	
-	if (pathname && path.pathname != pathname) {
+
+	if (pathname) {
 		var deps = query.keyDeps;
 		for (var key in deps) {
 			deps[key].changed();
 		};
 		query.dep && query.dep.changed();
 	}
-	
+
 	pathname = path.pathname;
 	queryObj = path.queryObject;
 });
